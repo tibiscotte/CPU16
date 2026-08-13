@@ -1,0 +1,10 @@
+int val 0 = reset
+int val 1 = update bus.vram
+int val 2 = copy ram into gpu vram
+int val 3 = get key (wait for key) (a is the key)
+int val 4 = is key pressed (a is the bool and b the key)
+int val 5 = read an byte in a sector (a is the sector and b the address of the byte)
+int val 6 = same as last for write but c is the value
+int val 7 = load the file for the next sector (a is the id of the file)
+int val 8 = put the file in the sector (a is the sector)
+int val 9 = go to a sector (a is also the sector)
