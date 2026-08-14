@@ -41,7 +41,7 @@ bool Gpu::init()
 {
     if (SDL_Init(SDL_INIT_VIDEO) != 0)
     {
-        std::cerr << "Erreur SDL_Init : " << SDL_GetError() << std::endl;
+        std::cerr << "SDL_Init error: " << SDL_GetError() << std::endl;
         return false;
     }
 
@@ -49,7 +49,7 @@ bool Gpu::init()
 
     if (!window)
     {
-        std::cerr << "Erreur SDL_CreateWindow : " << SDL_GetError() << std::endl;
+        std::cerr << "SDL_CreateWindow error: " << SDL_GetError() << std::endl;
         return false;
     }
 
@@ -57,7 +57,7 @@ bool Gpu::init()
 
     if (!renderer)
     {
-        std::cerr << "Erreur renderer : " << SDL_GetError() << std::endl;
+        std::cerr << "Renderer error: " << SDL_GetError() << std::endl;
         return false;
     }
 
@@ -69,7 +69,7 @@ bool Gpu::init()
     );
 
     if (!texture) {
-        std::cerr << "Erreur Texture : " << SDL_GetError() << std::endl;
+        std::cerr << "Texture error: " << SDL_GetError() << std::endl;
         return false;
     }
 
@@ -119,13 +119,13 @@ void Gpu::drawScreen()
 {
     if (!renderer)
     {
-        std::cerr << "ERREUR : renderer == nullptr" << std::endl;
+        std::cerr << "ERROR : renderer == nullptr" << std::endl;
         return;
     }
 
     if (!texture)
     {
-        std::cerr << "ERREUR : texture == nullptr" << std::endl;
+        std::cerr << "ERROR : texture == nullptr" << std::endl;
         return;
     }
 

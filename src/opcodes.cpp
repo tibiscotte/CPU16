@@ -4,7 +4,7 @@
 bool isHlt(bool debug, Cpu& cpu)
 {
     if (debug)
-        std::cout << "Instruction : hlt à l'IP: " << cpu.IP << std::endl;
+        std::cout << "Instruction: hlt" << cpu.IP << std::endl;
     return false;
 }
 
@@ -21,12 +21,12 @@ bool isMov(bool debug, uint8_t type1, uint8_t type2, Cpu& cpu, uint16_t arg1, ui
 
     case 0x01:
         if (debug)
-            std::cout << "Impossible de stoquer dans un nombre" << std::endl;
+            std::cout << "Impossible to store in a number" << std::endl;
         return false;
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -46,7 +46,7 @@ bool isMov(bool debug, uint8_t type1, uint8_t type2, Cpu& cpu, uint16_t arg1, ui
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -70,12 +70,12 @@ bool isAdd(bool debug, uint8_t type1, uint8_t type2, Cpu& cpu, uint16_t arg1, ui
 
     case 0x01:
         if (debug)
-            std::cout << "Impossible de stoquer dans un nombre" << std::endl;
+            std::cout << "Impossible to store in a number" << std::endl;
         return false;
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -95,7 +95,7 @@ bool isAdd(bool debug, uint8_t type1, uint8_t type2, Cpu& cpu, uint16_t arg1, ui
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -119,12 +119,12 @@ bool isSub(bool debug, uint8_t type1, uint8_t type2, Cpu& cpu, uint16_t arg1, ui
 
     case 0x01:
         if (debug)
-            std::cout << "Impossible de stoquer dans un nombre" << std::endl;
+            std::cout << "Impossible to store in a number" << std::endl;
         return false;
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -144,7 +144,7 @@ bool isSub(bool debug, uint8_t type1, uint8_t type2, Cpu& cpu, uint16_t arg1, ui
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -168,12 +168,12 @@ bool isXor(bool debug, uint8_t type1, uint8_t type2, Cpu& cpu, uint16_t arg1, ui
 
     case 0x01:
         if (debug)
-            std::cout << "Impossible de stoquer dans un nombre" << std::endl;
+            std::cout << "Impossible to store in a number" << std::endl;
         return false;
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -193,7 +193,7 @@ bool isXor(bool debug, uint8_t type1, uint8_t type2, Cpu& cpu, uint16_t arg1, ui
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -217,12 +217,12 @@ bool isOr(bool debug, uint8_t type1, uint8_t type2, Cpu& cpu, uint16_t arg1, uin
 
     case 0x01:
         if (debug)
-            std::cout << "Impossible de stoquer dans un nombre" << std::endl;
+            std::cout << "Impossible to store in a number" << std::endl;
         return false;
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -242,7 +242,7 @@ bool isOr(bool debug, uint8_t type1, uint8_t type2, Cpu& cpu, uint16_t arg1, uin
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -266,12 +266,12 @@ bool isInc(bool debug, uint8_t type1, Cpu& cpu, uint16_t arg1, uint16_t value1)
 
     case 0x01:
         if (debug)
-            std::cout << "Impossible de stoquer dans un nombre" << std::endl;
+            std::cout << "Impossible to store in a number" << std::endl;
         return false;
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -295,12 +295,12 @@ bool isDec(bool debug, uint8_t type1, Cpu& cpu, uint16_t arg1, uint16_t value1)
 
     case 0x01:
         if (debug)
-            std::cout << "Impossible de stoquer dans un nombre" << std::endl;
+            std::cout << "Impossible to store in a number" << std::endl;
         return false;
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -330,7 +330,7 @@ bool isJmp(bool debug, uint8_t type1, Cpu& cpu, uint16_t arg1, uint16_t value1)
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -358,7 +358,7 @@ bool isJie(bool debug, uint8_t type1, Cpu& cpu, uint16_t arg1, uint16_t value1)
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -367,7 +367,7 @@ bool isJie(bool debug, uint8_t type1, Cpu& cpu, uint16_t arg1, uint16_t value1)
     else
     {
         if (debug)
-            std::cout << "condition non-remplie" << std::endl;
+            std::cout << "condition not met" << std::endl;
         cpu.IP += 4;
     }
     return true;
@@ -393,7 +393,7 @@ bool isJig(bool debug, uint8_t type1, Cpu& cpu, uint16_t arg1, uint16_t value1)
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -402,7 +402,7 @@ bool isJig(bool debug, uint8_t type1, Cpu& cpu, uint16_t arg1, uint16_t value1)
     else
     {
         if (debug)
-            std::cout << "condition non-remplie" << std::endl;
+            std::cout << "condition not met" << std::endl;
         cpu.IP += 4;
     }
     return true;
@@ -428,7 +428,7 @@ bool isJil(bool debug, uint8_t type1, Cpu& cpu, uint16_t arg1, uint16_t value1)
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -437,7 +437,7 @@ bool isJil(bool debug, uint8_t type1, Cpu& cpu, uint16_t arg1, uint16_t value1)
     else
     {
         if (debug)
-            std::cout << "condition non-remplie" << std::endl;
+            std::cout << "condition not met" << std::endl;
         cpu.IP += 4;
     }
     return true;
@@ -463,7 +463,7 @@ bool isJeg(bool debug, uint8_t type1, Cpu& cpu, uint16_t arg1, uint16_t value1)
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -472,7 +472,7 @@ bool isJeg(bool debug, uint8_t type1, Cpu& cpu, uint16_t arg1, uint16_t value1)
     else
     {
         if (debug)
-            std::cout << "condition non-remplie" << std::endl;
+            std::cout << "condition not met" << std::endl;
         cpu.IP += 4;
     }
     return true;
@@ -498,7 +498,7 @@ bool isJel(bool debug, uint8_t type1, Cpu& cpu, uint16_t arg1, uint16_t value1)
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -507,7 +507,7 @@ bool isJel(bool debug, uint8_t type1, Cpu& cpu, uint16_t arg1, uint16_t value1)
     else
     {
         if (debug)
-            std::cout << "condition non-remplie" << std::endl;
+            std::cout << "condition not met" << std::endl;
         cpu.IP += 4;
     }
     return true;
@@ -533,7 +533,7 @@ bool isJne(bool debug, uint8_t type1, Cpu& cpu, uint16_t arg1, uint16_t value1)
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -542,7 +542,7 @@ bool isJne(bool debug, uint8_t type1, Cpu& cpu, uint16_t arg1, uint16_t value1)
     else
     {
         if (debug)
-            std::cout << "condition non-remplie" << std::endl;
+            std::cout << "condition not met" << std::endl;
         cpu.IP += 4;
     }
     return true;
@@ -568,7 +568,7 @@ bool isCmp(bool debug, uint8_t type1, uint8_t type2, Cpu& cpu, uint16_t arg1, ui
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -588,7 +588,7 @@ bool isCmp(bool debug, uint8_t type1, uint8_t type2, Cpu& cpu, uint16_t arg1, ui
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -625,7 +625,7 @@ bool isCall(bool debug, uint8_t type1, Cpu& cpu, uint16_t arg1, uint16_t value1)
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -664,7 +664,7 @@ bool isPush(bool debug, uint8_t type1, Cpu& cpu, uint16_t arg1, uint16_t value1)
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -689,12 +689,12 @@ bool isPop(bool debug, uint8_t type1, Cpu& cpu, uint16_t arg1, uint16_t value1)
 
     case 0x01:
         if (debug)
-            std::cout << "Impossible de stoquer dans un nombre" << std::endl;
+            std::cout << "Impossible to store in a number" << std::endl;
         return false;
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -723,7 +723,7 @@ bool isLdRam(bool debug, uint8_t type1, uint8_t type2, Cpu& cpu, uint16_t arg1, 
 
     case 0x01:
         if (debug)
-            std::cout << "Impossible de stoquer dans un nombre" << std::endl;
+            std::cout << "Impossible to store in a number" << std::endl;
         return false;
 
     case 0x02:
@@ -740,7 +740,7 @@ bool isLdRam(bool debug, uint8_t type1, uint8_t type2, Cpu& cpu, uint16_t arg1, 
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -772,7 +772,7 @@ bool isLdRam(bool debug, uint8_t type1, uint8_t type2, Cpu& cpu, uint16_t arg1, 
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -813,7 +813,7 @@ bool isLdVrm(bool debug, uint8_t type1, uint8_t type2, Cpu& cpu, uint16_t arg1, 
 
     case 0x01:
         if (debug)
-            std::cout << "Impossible de stoquer dans un nombre" << std::endl;
+            std::cout << "Impossible to store in a number" << std::endl;
         return false;
 
     case 0x02:
@@ -830,7 +830,7 @@ bool isLdVrm(bool debug, uint8_t type1, uint8_t type2, Cpu& cpu, uint16_t arg1, 
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -862,7 +862,7 @@ bool isLdVrm(bool debug, uint8_t type1, uint8_t type2, Cpu& cpu, uint16_t arg1, 
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -907,7 +907,7 @@ bool isInt(bool debug, uint8_t type1, Cpu& cpu, uint16_t arg1, uint16_t value1)
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -943,18 +943,18 @@ bool isInt(bool debug, uint8_t type1, Cpu& cpu, uint16_t arg1, uint16_t value1)
     case 0x0007:
         nextTrack = getFilePath(cpu.A); 
         if (debug)
-            std::cout << "[INT 7] Fichier selectionne : " << nextTrack << std::endl;
+            std::cout << "Selected file: " << nextTrack << std::endl;
         break;
     case 0x0008:
         if (!nextTrack.empty())
         {
             if (debug)
-                std::cout << "[INT 8] Chargement de " << nextTrack << " sur le secteur " << cpu.A << "..." << std::endl;
+                std::cout << "Loading" << nextTrack << " onto sector " << cpu.A << "..." << std::endl;
             cpu.hd->writeFileToSector(nextTrack, cpu.A);
         }
         else if (debug)
         {
-            std::cerr << "[INT 8] Erreur : Chemin de fichier invalide ou non specifie !" << std::endl;
+            std::cerr << "Error: Invalid or unspecified file path!" << std::endl;
         }
         break;
     case 0x0009:
@@ -981,12 +981,12 @@ bool isMul(bool debug, uint8_t type1, uint8_t type2, Cpu& cpu, uint16_t arg1, ui
 
     case 0x01:
         if (debug)
-            std::cout << "Impossible de stoquer dans un nombre" << std::endl;
+            std::cout << "Impossible to store in a number" << std::endl;
         return false;
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 
@@ -1006,7 +1006,7 @@ bool isMul(bool debug, uint8_t type1, uint8_t type2, Cpu& cpu, uint16_t arg1, ui
     
     default:
         if (debug)
-            std::cout << "Type invalide" << std::endl;
+            std::cout << "Invalid type" << std::endl;
         return false;
     }
 

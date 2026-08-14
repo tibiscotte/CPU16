@@ -38,7 +38,7 @@ void HardDisk::load()
             }
         }
     } catch (const std::exception& e) {
-        std::cerr << "Erreur de lecture du JSON HardDisk : " << e.what() << std::endl;
+        std::cerr << "HardDisk JSON read error: " << e.what() << std::endl;
     }
 }
 

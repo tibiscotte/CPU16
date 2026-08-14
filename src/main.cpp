@@ -4,7 +4,7 @@ int main(int argc, char* argv[])
 {
     if (argc != 3)
     {
-        std::cout << "Nombre d'arguments invalide" << std::endl;
+        std::cout << "Invalid number of arguments" << std::endl;
         return 1;
     }
     
@@ -25,10 +25,6 @@ int main(int argc, char* argv[])
 
     hd->writeFileToSector(argv[1], 0x0000);
 
-    std::cout << "Premier octet : "
-              << static_cast<int>(hd->read8(0x0000, 0x0000))
-              << '\n';
-
     hd->loadInRom(0x0000, rom);
 
     bus.rom = &rom;
@@ -47,7 +43,7 @@ int main(int argc, char* argv[])
         cpu.debug = false;
     else
     {
-        std::cout << "Deuxieme argument invalide" << std::endl;
+        std::cout << "Second invalid argument" << std::endl;
         return 1;
     }
 

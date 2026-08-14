@@ -162,7 +162,7 @@ void Cpu::step()
 
     default:
         if (debug)
-            std::cout << "Opcode invalide" << std::endl;
+            std::cout << "Invalid opcode" << std::endl;
         running = false;
     }
 }

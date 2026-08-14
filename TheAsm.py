@@ -91,21 +91,21 @@ def encode_argument(argument, argument_type, labels):
     if argument_type == 0x00:
         if argument not in regs:
             raise ValueError(
-                f"Registre inconnu '{argument}'"
+                f"Unknown register '{argument}'"
             )
         return regs.index(argument)
 
     if argument_type == 0x03:
         if argument not in regs:
             raise ValueError(
-                f"Registre inconnu '{argument}'"
+                f"Unknown register '{argument}'"
             )
         return regs.index(argument)
 
     if argument.startswith("."):
         if argument not in labels:
             raise ValueError(
-                f"Label inconnu '{argument}'"
+                f"Unknown label '{argument}'"
             )
         return labels[argument]
 
@@ -133,8 +133,8 @@ with open(path, "r") as file:
 
             if label in labels:
                 print(
-                    f"Erreur Ligne {line_num} : "
-                    f"Label déjà défini '{label}'"
+                    f"Error Line {line_num} : "
+                    f"Label already defined '{label}'"
                 )
                 sys.exit(1)
 
@@ -145,8 +145,8 @@ with open(path, "r") as file:
 
         if instr not in OPCODES_CONFIG:
             print(
-                f"Erreur Ligne {line_num} : "
-                f"Instruction inconnue '{instr}'"
+                f"Error Line {line_num} : "
+                f"Unknown instruction '{instr}'"
             )
             sys.exit(1)
 
@@ -184,8 +184,8 @@ with open(path, "r") as file:
 
         if instr not in OPCODES_CONFIG:
             print(
-                f"Erreur Ligne {line_num} : "
-                f"Instruction inconnue '{instr}'"
+                f"Error Line {line_num} : "
+                f"Unknown instruction '{instr}'"
             )
             sys.exit(1)
 
@@ -203,7 +203,7 @@ with open(path, "r") as file:
                     )
                 except ValueError as error:
                     print(
-                        f"Erreur Ligne {line_num} : "
+                        f"Error Line {line_num} : "
                         f"{error}"
                     )
                     sys.exit(1)
@@ -231,8 +231,8 @@ with open(path, "r") as file:
 
         if type1 is None:
             print(
-                f"Erreur Ligne {line_num} : "
-                f"Type d'argument invalide "
+                f"Error Line {line_num} : "
+                f"Invalid argument type "
                 f"'{type1_name}'"
             )
             sys.exit(1)
@@ -247,8 +247,8 @@ with open(path, "r") as file:
 
             if type2 is None:
                 print(
-                    f"Erreur Ligne {line_num} : "
-                    f"Type d'argument invalide "
+                    f"Error Line {line_num} : "
+                    f"Invalid argument type "
                     f"'{type2_name}'"
                 )
                 sys.exit(1)
@@ -278,14 +278,14 @@ with open(path, "r") as file:
 
         except IndexError:
             print(
-                f"Erreur Ligne {line_num} : "
-                f"Argument 1 manquant"
+                f"Error Line {line_num} : "
+                f"Argument 1 missing"
             )
             sys.exit(1)
 
         except ValueError as error:
             print(
-                f"Erreur Ligne {line_num} : "
+                f"Error Line {line_num} : "
                 f"{error}"
             )
             sys.exit(1)
@@ -306,14 +306,14 @@ with open(path, "r") as file:
 
             except IndexError:
                 print(
-                    f"Erreur Ligne {line_num} : "
-                    f"Argument 2 manquant"
+                    f"Error Line {line_num} : "
+                    f"Argument 2 missing"
                 )
                 sys.exit(1)
 
             except ValueError as error:
                 print(
-                    f"Erreur Ligne {line_num} : "
+                    f"Error Line {line_num} : "
                     f"{error}"
                 )
                 sys.exit(1)
@@ -323,6 +323,6 @@ with open(output, "wb") as out_file:
     out_file.write(content)
 
 print(
-    f"Compilation réussie : "
-    f"{len(content)} octets générés dans '{output}'."
+    f"Compilation successful: "
+    f"{len(content)} bytes generated in '{output}'."
 )
