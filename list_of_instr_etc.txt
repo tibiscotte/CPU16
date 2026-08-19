@@ -11,3 +11,22 @@ int val 9 = go to a sector (a is also the sector)
 int val 10 = write a char of mvac (My Version of the ASCII Code, a is the char)
 int val 11 = set the cursor pos (c is the pos)
 int val 12 = reset the vram
+
+MVAC:
+0 -> 25 = "a" -> "z"
+26 -> 35 = "1" -> "0"
+36 = ","
+37 = "."
+38 = " "
+39 = "/"
+40 = "["
+41 = "]"
+42 = "\"
+43 = "bcksp"
+44 = "lgui"
+45 = "rtrn"
+46 = 
+47 = 
+48 = 
+49 = 
+50 = 
