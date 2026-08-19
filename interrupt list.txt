@@ -8,3 +8,6 @@ int val 6 = same as last for write but c is the value
 int val 7 = load the file for the next sector (a is the id of the file)
 int val 8 = put the file in the sector (a is the sector)
 int val 9 = go to a sector (a is also the sector)
+int val 10 = write a char of mvac (My Version of the ASCII Code, a is the char)
+int val 11 = set the cursor pos (c is the pos)
+int val 12 = reset the vram

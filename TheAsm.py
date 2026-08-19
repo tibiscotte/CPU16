@@ -318,7 +318,6 @@ with open(path, "r") as file:
                 )
                 sys.exit(1)
 
-
 with open(output, "wb") as out_file:
     out_file.write(content)
 

@@ -17,6 +17,10 @@ std::string getFilePath(uint16_t fileId)
 
 Cpu::Cpu()
 {
+    bus = nullptr;
+    gpu = nullptr;
+    hd = nullptr;
+
     reset();
     IP = 0;
 }
@@ -30,6 +34,8 @@ void Cpu::reset()
     pushed.fill(0x0000);
 
     running = true;
+
+    gpuUpdate = false;
 }
 
 void Cpu::step()

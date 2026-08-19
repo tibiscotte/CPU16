@@ -7,6 +7,8 @@ int main(int argc, char* argv[])
         std::cout << "Invalid number of arguments" << std::endl;
         return 1;
     }
+
+    std::cout << "ROM file: " << argv[1] << std::endl;
     
     Cpu cpu;
     Gpu gpu;

@@ -1,147 +1,42 @@
-mov reg val x 100
-mov reg val y 100
+.loop:
+    int val 4
+    cmp reg val a 1
+    jie .key_pressed
+    jmp .loop
 
-.is_x_valid_1:
-cmp reg val x 0
-jig .is_x_valid_2
-jmp .x_is_not_valid
+.key_pressed:
+    mov reg reg a b
+    cmp reg val a 43
+    jie .backspace
+    cmp reg val a 45
+    jie .enter
+    jne .printable_char
 
-.is_x_valid_2:
-cmp reg val x 199
-jil .is_y_valid_1
-jmp .x2_is_not_valid
+.printable_char:
+    cmp reg val d 10
+    jie .loop
+    inc reg d
+    int val 11
+    int val 10
+    int val 1
+    xor reg reg a a
+    inc reg c
+    jmp .loop
 
-.is_y_valid_1:
-cmp reg val y 0
-jig .is_y_valid_2
-jmp .y_is_not_valid
+.backspace:
+    dec reg c
+    dec reg d
+    int val 11
+    int val 10
+    int val 1
+    xor reg reg a a
+    jmp .loop
 
-.is_y_valid_2:
-cmp reg val y 199
-jil .all_is_valid
-jmp .y2_is_not_valid
+.enter:
+    xor reg reg d d
+    xor reg reg c c
+    int val 12
+    int val 1
+    jmp .loop
 
-
-.all_is_valid:
-mov reg reg d y
-mul reg val d 200
-add reg reg d x
-ldram ptr val d 4
-int val 2
-int val 1
-int val 4
-cmp reg val a 1
-jie .key_is_pressed
-jmp .all_is_valid
-
-.key_is_pressed:
-ldram ptr val d 0
-cmp reg val b 0x0061
-jie .a_is_pressed
-cmp reg val b 0x0064
-jie .d_is_pressed
-cmp reg val b 0x0077
-jie .w_is_pressed
-cmp reg val b 0x0073
-jie .s_is_pressed
-jmp .all_is_valid
-
-.a_is_pressed:
-dec reg x
-jmp .is_x_valid_1
-
-.d_is_pressed:
-inc reg x
-jmp .is_x_valid_1
-
-.w_is_pressed:
-dec reg y
-jmp .is_x_valid_1
-
-.s_is_pressed:
-inc reg y
-jmp .is_x_valid_1
-
-
-
-.x_is_not_valid:
-mov reg reg d y
-mul reg val d 200
-add reg reg d x
-ldram ptr val d 4
-int val 2
-int val 1
-int val 4
-cmp reg val a 1
-jne .x_is_not_valid
-ldram ptr val d 0
-cmp reg val b 0x0064
-jie .d_is_pressed
-cmp reg val b 0x0077
-jie .w_is_pressed
-cmp reg val b 0x0073
-jie .s_is_pressed
-jmp .is_x_valid_1
-
-
-
-.x2_is_not_valid:
-mov reg reg d y
-mul reg val d 200
-add reg reg d x
-ldram ptr val d 4
-int val 2
-int val 1
-int val 4
-cmp reg val a 1
-jne .x2_is_not_valid
-ldram ptr val d 0
-cmp reg val b 0x0061
-jie .a_is_pressed
-cmp reg val b 0x0077
-jie .w_is_pressed
-cmp reg val b 0x0073
-jie .s_is_pressed
-jmp .is_x_valid_1
-
-
-
-.y_is_not_valid:
-mov reg reg d y
-mul reg val d 200
-add reg reg d x
-ldram ptr val d 4
-int val 2
-int val 1
-int val 4
-cmp reg val a 1
-jne .y_is_not_valid
-ldram ptr val d 0
-cmp reg val b 0x0061
-jie .a_is_pressed
-cmp reg val b 0x0064
-jie .d_is_pressed
-cmp reg val b 0x0073
-jie .s_is_pressed
-jmp .is_x_valid_1
-
-
-
-.y2_is_not_valid:
-mov reg reg d y
-mul reg val d 200
-add reg reg d x
-ldram ptr val d 4
-int val 2
-int val 1
-int val 4
-cmp reg val a 1
-jne .y2_is_not_valid
-ldram ptr val d 0
-cmp reg val b 0x0061
-jie .a_is_pressed
-cmp reg val b 0x0077
-jie .w_is_pressed
-cmp reg val b 0x0064
-jie .d_is_pressed
-jmp .is_x_valid_1
+hlt

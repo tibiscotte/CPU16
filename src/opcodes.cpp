@@ -4,7 +4,7 @@
 bool isHlt(bool debug, Cpu& cpu)
 {
     if (debug)
-        std::cout << "Instruction: hlt" << cpu.IP << std::endl;
+        std::cout << "Instruction: hlt" << std::endl;
     return false;
 }
 
@@ -879,7 +879,7 @@ bool isLdVrm(bool debug, uint8_t type1, uint8_t type2, Cpu& cpu, uint16_t arg1, 
     }
     else if (inPtr)
     {
-        cpu.bus->write8(static_cast<uint32_t>((arg1)) + 0x20000, value2);
+        cpu.bus->write8(static_cast<uint32_t>(cpu.getRegister(arg1)) + 0x20000, value2);
         if (debug)
             std::cout << "0x" << std::hex << cpu.getRegister(arg1) << std::dec << " = " << value2 << std::endl;
     }
@@ -928,11 +928,14 @@ bool isInt(bool debug, uint8_t type1, Cpu& cpu, uint16_t arg1, uint16_t value1)
         cpu.bus->vram->data = cpu.bus->ram->data;
         break;
     case 0x0003:
-        cpu.A = cpu.gpu->getKey();
+        cpu.gpu->getKey();
+        cpu.A = cpu.gpu->convertKey(cpu.gpu->key);
+        cpu.gpu->keyPressed = false;
         break;
     case 0x0004:
         cpu.A = cpu.gpu->keyPressed;
-        cpu.B = cpu.gpu->key;
+        cpu.B = cpu.gpu->convertKey(cpu.gpu->key);
+        cpu.gpu->keyPressed = false;
         break;
     case 0x0005:
         cpu.C = cpu.hd->read8(cpu.A, cpu.B);
@@ -961,6 +964,16 @@ bool isInt(bool debug, uint8_t type1, Cpu& cpu, uint16_t arg1, uint16_t value1)
         cpu.hd->loadInRom(cpu.A, *cpu.bus->rom);
         cpu.IP = -4;
         cpu.running = true;
+        break;
+    case 0x000a:
+        cpu.gpu->drawChar(cpu.A, cpu);
+        break;
+    case 0x000b:
+        cpu.gpu->cursorPos = (cpu.C % 32) * 8 + (cpu.C / 32) * 2048;
+        break;
+    case 0x000c:
+        cpu.bus->vram->reset();
+        break;
     default:
         break;
     }

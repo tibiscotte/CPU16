@@ -4,6 +4,9 @@
 #include <cstdint>
 #include <iostream>
 #include <vram.hpp>
+#include <array>
+
+class Cpu;
 
 struct Color
 {
@@ -15,20 +18,21 @@ struct Color
 class Gpu
 {
 public:
-    SDL_Window* window;
-    SDL_Renderer* renderer;
-    SDL_Texture* texture;
-    uint32_t pixels[40000];
+    SDL_Window *window;
+    SDL_Renderer *renderer;
+    SDL_Texture *texture;
+    uint32_t pixels[65535];
 
     std::array<Color, 256> palette;
 
     Vram vram;
 
-    uint16_t key;
+    SDL_Keycode key;
     bool keyPressed;
 
     bool running;
 
+    uint16_t cursorPos;
 
     Gpu();
     ~Gpu();
@@ -37,5 +41,7 @@ public:
     bool init();
     void handleEvents();
     void drawScreen();
-    uint16_t getKey();
+    void drawChar(uint16_t mvac, Cpu &cpu);
+    uint8_t convertKey(SDL_Keycode key);
+    void getKey();
 };
