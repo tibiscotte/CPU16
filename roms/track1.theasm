@@ -1,0 +1,134 @@
+int val 12
+
+.draw_first_char:
+    int val 11
+
+    mov reg val a 49
+    int val 10
+
+    inc reg c
+    int val 11
+
+    mov reg val a 39
+    int val 10
+
+   inc reg c
+    int val 11
+
+    xor reg reg a a
+    mov reg reg b a
+    mov reg val d 0
+
+    int val 1
+    jmp .loop
+
+.loop:
+    xor reg reg a a
+    int val 4
+    cmp reg val a 1
+    jie .key_pressed
+    jmp .loop
+
+.key_pressed:
+    mov reg reg a b
+    cmp reg val a 43
+    jie .backspace
+    cmp reg val a 45
+    jie .enter
+    jne .printable_char
+
+.printable_char:
+    cmp reg val d 30
+    jie .loop
+    ldram ptr reg d a
+    inc reg d
+    int val 11
+    int val 10
+    int val 1
+    xor reg reg a a
+    inc reg c
+    jmp .loop
+
+.backspace:
+    cmp reg val d 0
+    jie .loop
+    dec reg c
+    ldram ptr val d 0
+    dec reg d
+    int val 11
+    int val 10
+    int val 1
+    xor reg reg a a
+    jmp .loop
+
+.enter:
+    xor reg reg d d
+    xor reg reg c c
+    int val 12
+    int val 1
+    call .execute_code
+    jmp .reset_char
+
+.execute_code:
+    ldram reg adr d 0
+    cmp reg val d 15
+    jne .return
+    call .is_print1
+    
+.return:
+    ret
+
+.is_print1:
+    ldram reg adr d 1
+    cmp reg val d 17
+    jne .return
+
+.is_print2:
+    ldram reg adr d 2
+    cmp reg val d 8
+    jne .return
+
+.is_print3:
+    ldram reg adr d 3
+    cmp reg val d 13
+    jne .return
+
+.is_print4:
+    ldram reg adr d 4
+    cmp reg val d 19
+    jne .return
+
+.is_print:
+    call .do_print
+    mov reg val c 32
+    jmp .draw_first_char
+
+.do_print:
+    xor reg reg a a
+    mov reg reg b a
+    mov reg reg c a
+    mov reg reg d a
+    mov reg reg w a
+    mov reg reg x a
+    mov reg reg y a
+    mov reg reg z a
+
+    ldram reg adr a 6
+
+    call .reset_char
+
+    mov reg val c 0
+    int val 11
+
+    int val 10
+    int val 1
+    jmp .return
+
+.reset_char:
+    cmp reg val d 31
+    jig .return
+    ldram ptr val d 0
+    inc reg d
+    jmp .reset_char
+
+hlt

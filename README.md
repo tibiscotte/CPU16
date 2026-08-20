@@ -6,7 +6,7 @@ int val 1 = update bus.vram
 int val 2 = copy ram into gpu vram
 int val 3 = get key (wait for key) (a is the key)
 int val 4 = is key pressed (a is the bool and b the key)
-int val 5 = read an byte in a sector (a is the sector and b the address of the byte)
+int val 5 = read a byte in a sector (a is the sector and b the address of the byte)
 int val 6 = same as last for write but c is the value
 int val 7 = load the file for the next sector (a is the id of the file)
 int val 8 = put the file in the sector (a is the sector)
@@ -28,10 +28,10 @@ MVAC:
 43 = "bcksp"
 44 = "lgui"
 45 = "rtrn"
-46 = 
-47 = 
-48 = 
-49 = 
+46 = "_"
+47 = "-"
+48 = "<"
+49 = ">"
 50 = 
 51 = 
 52 = 
@@ -68,7 +68,7 @@ call, 1 arg, jump and store the current IP address in the push list
 ret, no args, return to the last value stored in pop
 push, 1 arg, push a register or a value in the push list
 pop, 1 arg, store in a register last value stored in push list
-ldram, 2 args, store a value in an ram address
+ldram, 2 args, store a value in an ram address or store in a register a value of the ram
 ldvrm, 2 args, store a value in an vram address
 int, 1 arg, execute an interruption
 mul, 2 args, mul a register with a value or a register
@@ -83,5 +83,5 @@ how to compile:
 TheAsm <your_input_file.theasm> <your_output_file.the>
 
 how to run:
-./cpu16 <boot_file.the> <bool debug>
+./cpu16 <bool debug ("t" or "f")> <boot_file.the> (<- optional if you already dejine the boot code)
 ```

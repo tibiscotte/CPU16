@@ -761,13 +761,13 @@ bool isLdRam(bool debug, uint8_t type1, uint8_t type2, Cpu& cpu, uint16_t arg1, 
     case 0x02:
         if (debug)
             std::cout << "0x" << std::hex << arg2 << std::dec << std::endl;
-        value2 = cpu.bus->read16(arg2 + 0x10000);
+        value2 = cpu.bus->ram->read8(arg2 + 0x10000);
         break;
 
     case 0x03:
         if (debug)
             std::cout << "0x" << std::hex << cpu.getRegister(arg2) << std::dec << std::endl;
-        value2 = cpu.bus->read16(cpu.getRegister(arg2) + 0x10000);
+        value2 = cpu.bus->ram->read8(cpu.getRegister(arg2) + 0x10000);
         break;
     
     default:
@@ -778,8 +778,10 @@ bool isLdRam(bool debug, uint8_t type1, uint8_t type2, Cpu& cpu, uint16_t arg1, 
 
     if (inReg)
     {
+        cpu.setRegister(arg1, value2);
+
         if (debug)
-            std::cout << "Utilisez mov pour ceci" << std::endl;
+            std::cout << cpu.getRegisterName(arg1) << " = " << value2 << std::endl;
     }
     else if (inAdr)
     {

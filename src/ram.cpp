@@ -22,6 +22,11 @@ uint16_t Ram::read16(uint16_t address)
     return (data[address] << 8) | data[address + 1];
 }
 
+uint8_t Ram::read8(uint16_t address)
+{
+    return data[address];
+}
+
 void Ram::write16(uint16_t address, uint16_t value)
 {
     data[address] = (value >> 8) & 0xFF;
@@ -40,12 +45,6 @@ void Ram::save()
     j["data"] = data;
 
     std::ofstream file("../src/json/ram_backup.json");
-
-    if (!file)
-    {
-        std::cerr << "Erreur : impossible d'ouvrir ram_backup.json" << std::endl;
-        return;
-    }
 
     file << j.dump(4);
 }

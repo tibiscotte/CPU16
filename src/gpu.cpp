@@ -20,14 +20,14 @@ Gpu::Gpu()
 
 Gpu::~Gpu()
 {
+    if (texture)
+        SDL_DestroyTexture(texture);
+
     if (renderer)
         SDL_DestroyRenderer(renderer);
 
     if (window)
         SDL_DestroyWindow(window);
-
-    if (texture)
-        SDL_DestroyTexture(texture);
 
     SDL_Quit();
 }
@@ -54,6 +54,10 @@ bool Gpu::init()
         std::cerr << "SDL_CreateWindow error: " << SDL_GetError() << std::endl;
         return false;
     }
+
+    SDL_ShowWindow(window);
+    SDL_RaiseWindow(window);
+    SDL_SetWindowPosition(window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
 
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
@@ -91,6 +95,9 @@ void Gpu::handleEvents()
 
         if (event.type == SDL_KEYDOWN)
         {
+            if (event.key.keysym.sym == SDLK_ESCAPE)
+                running = false;
+
             if (event.key.repeat == 0)
             {
                 key = event.key.keysym.sym;
@@ -233,6 +240,10 @@ uint8_t Gpu::convertKey(SDL_Keycode key)
         case SDLK_BACKSPACE: return 43;
         case SDLK_LGUI: return 44;
         case SDLK_RETURN: return 45;
+        case SDLK_UNDERSCORE: return 46;
+        case SDLK_MINUS: return 47;
+        case SDLK_LSHIFT: return 48;
+        case SDLK_RSHIFT: return 49;
 
         default: return 42;
     }

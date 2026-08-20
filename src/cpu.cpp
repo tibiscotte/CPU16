@@ -3,8 +3,7 @@
 #include <string>
 
 std::unordered_map<uint16_t, std::string> fileTable = {
-    { 0x0000, "../roms/theo.the" },
-    { 0x0001, "../roms/track1.the" }
+    { 0x0000, "../roms/boot.the" }
 };
 
 std::string getFilePath(uint16_t fileId)
@@ -17,6 +16,11 @@ std::string getFilePath(uint16_t fileId)
 
 Cpu::Cpu()
 {
+    for (uint32_t i = 1; i < 0x10000; i++)
+    {
+        fileTable[i] = "../roms/track" + std::to_string(i) + ".the";
+    }
+    
     bus = nullptr;
     gpu = nullptr;
     hd = nullptr;

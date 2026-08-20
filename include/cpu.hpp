@@ -19,7 +19,7 @@ public:
 
     bool gpuUpdate;
 
-    std::array<uint16_t, 32> pushed;
+    std::array<uint16_t, 64> pushed;
 
     Bus *bus;
     Gpu *gpu;

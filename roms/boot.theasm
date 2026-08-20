@@ -1,0 +1,4 @@
+mov reg val a 0x0001
+int val 7
+int val 8
+int val 9

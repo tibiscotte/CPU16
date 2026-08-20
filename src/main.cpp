@@ -2,13 +2,14 @@
 
 int main(int argc, char* argv[])
 {
-    if (argc != 3)
+    if (argc < 2)
     {
-        std::cout << "Invalid number of arguments" << std::endl;
+        std::cout << "Usage: cpu16 <t|f> [rom-file]" << std::endl;
         return 1;
     }
 
-    std::cout << "ROM file: " << argv[1] << std::endl;
+    if (argc >= 3)
+        std::cout << "ROM file: " << argv[2] << std::endl;
     
     Cpu cpu;
     Gpu gpu;
@@ -25,7 +26,8 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    hd->writeFileToSector(argv[1], 0x0000);
+    if (argc >= 3)
+        hd->writeFileToSector(argv[2], 0x0000);
 
     hd->loadInRom(0x0000, rom);
 
@@ -37,11 +39,13 @@ int main(int argc, char* argv[])
     cpu.gpu = &gpu;
     cpu.hd = hd;
 
-    std::string debug = argv[2];
+    gpu.drawScreen();
 
-    if (debug == "true")
+    std::string debug = argv[1];
+
+    if (debug == "t")
         cpu.debug = true;
-    else if (debug == "false")
+    else if (debug == "f")
         cpu.debug = false;
     else
     {
@@ -49,11 +53,12 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    while (cpu.running && gpu.running)
+    while (gpu.running)
     {
         gpu.handleEvents();
 
-        cpu.step();
+        if (cpu.running)
+            cpu.step();
 
         if (cpu.gpuUpdate)
         {
